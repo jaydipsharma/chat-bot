@@ -56,7 +56,7 @@ import pdfParse from "pdf-parse-fork";
 // Bot:
 // `;
 
-//     const geminiURL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyD0TDC3seWnixxf5dM1UPHfx_gwJ98xEvk`;
+//     const geminiURL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
 
 //     // ✅ Call Gemini
 //     let geminiRes;
@@ -143,7 +143,6 @@ export async function POST(req: Request) {
     const prompt = `
 You are a helpful assistant. Use only the following document to answer the user's question.
 If the answer is not in the document, say: "Sorry, I couldn't find that in the document."
-
 Document:
 """
 ${limitedText}

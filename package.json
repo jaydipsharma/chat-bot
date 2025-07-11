@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "@prisma/client": "^6.11.1",
     "next": "15.3.5",
     "pdf-parse-fork": "^1.2.0",
     "prisma": "^6.11.1",

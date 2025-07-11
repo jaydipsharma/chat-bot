@@ -17,11 +17,6 @@ export default function ChatPage() {
     setInput('');
     setLoading(true);
 
-      await fetch('/api/test', {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' },
-        // body: JSON.stringify({ message: input }),
-      });
     try {
       const res = await fetch('/api/chat', {
         method: 'POST',
