@@ -140,16 +140,25 @@ export async function POST(req: Request) {
 
     // Build prompt for Gemini
     const limitedText = text.slice(0, 16000); // Token-safe
-    const prompt = `
-You are a helpful assistant. Use only the following document to answer the user's question.
-If the answer is not in the document, say: "Sorry, I couldn't find that in the document."
-Document:
+const prompt = `
+📄 You are a smart assistant trained to ONLY use the following document to answer questions.
+
+❗ Instructions:
+- If the user asks for a **list of users or employees**, extract names and related details like designation, age, salary, etc., from the document.
+- Format the result as a clean table or bullet points.
+- If the user asks anything else, answer normally using the document.
+- Do NOT guess. If information is missing, say:
+  "Sorry, I couldn't find that in the document."
+
+👇 Document:
 """
 ${limitedText}
 """
 
-User: ${message}
-Bot:
+🙋 User:
+${message}
+
+🤖 Assistant:
 `;
 
     const geminiURL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
